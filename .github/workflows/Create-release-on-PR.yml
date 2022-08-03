@@ -36,7 +36,7 @@ jobs:
 
         - name: Get Previous Tag
           run: |
-            PREV_TAG=$(git describe --abbrev=0 --tags "${{ github.ref }}^")
+            PREV_TAG=$(git describe --abbrev=0 --tags)
             echo "::set-env name=baseRef::$PREV_TAG"
             REQ_TAG=$(git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=10`)
             echo "::set-env name=headref::$REQ_TAG"

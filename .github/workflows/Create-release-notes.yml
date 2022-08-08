@@ -8,6 +8,17 @@ on:
 #     # Only following types are handled by the action, but one can default to all as well
 #       types: [opened, reopened, synchronize]
 jobs:
+
+    lists-commits:
+      runs-on: ubuntu-latest
+      steps:
+         - name: Get Previous Tag
+           run: |
+            PREV_COMMIT=$(git describe --abbrev=0 --tags)
+            echo "::set-env name=baseRef::$PREV_TAG"
+            REQ_TAG=$(git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=10`)
+            echo "::set-env name=headref::$REQ_TAG"
+        
 #   build:
 #     runs-on: ubuntu-latest
 #     steps:
@@ -25,11 +36,11 @@ jobs:
 #           body: ${{ steps.tag_version.outputs.changelog }}
 
 
-  changes:
-    runs-on: ubuntu-latest
-    steps:
-      - id: file_changes
-        uses: trilom/file-changes-action@v1.2.3
+#   changes:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - id: file_changes
+#         uses: trilom/file-changes-action@v1.2.3
 #   release:
 #       name: Create Release
 #       runs-on: ubuntu-latest

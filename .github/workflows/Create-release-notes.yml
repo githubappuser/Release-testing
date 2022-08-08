@@ -12,15 +12,20 @@ jobs:
     Update-changelog:
       runs-on: ubuntu-latest
       steps:
-         - name: Get Previous Tag
-           run: |
+        - name: Checkout code
+          uses: actions/checkout@v2
+          with:
+            fetch-depth: 0
+
+        - name: Get Previous Tag
+          run: |
             LST_COMMIT=$(git rev-parse HEAD)
             echo "::set-env name=headRef::$LST_COMMIT"
             COMP_COMMIT=$(git rev-parse HEAD)^
             echo "::set-env name=headref::$COMP_COMMIT"
         
-         - name: Add and edit CHANGELOG.md
-           run: |
+        - name: Add and edit CHANGELOG.md
+          run: |
             
 
 #   build:

@@ -9,7 +9,7 @@ on:
 #       types: [opened, reopened, synchronize]
 jobs:
 
-    lists-commits:
+    Update-changelog:
       runs-on: ubuntu-latest
       steps:
          - name: Get Previous Tag
@@ -19,6 +19,10 @@ jobs:
             COMP_COMMIT=$(git rev-parse HEAD)^
             echo "::set-env name=headref::$COMP_COMMIT"
         
+         - name: Add and edit CHANGELOG.md
+           run: |
+            
+
 #   build:
 #     runs-on: ubuntu-latest
 #     steps:

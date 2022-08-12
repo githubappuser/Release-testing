@@ -16,7 +16,7 @@ jobs:
           script: |
             github.rest.pulls.create({
             owner: 'githubappuser',
-            repo: 'githubappuser/Release-testing',
+            repo: 'Release-testing',
             title: 'Try octokit',
             head: 'main',
             base: 'test',

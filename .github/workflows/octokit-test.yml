@@ -1,4 +1,4 @@
-name: Bump version
+name: Test-Octokit
 on:
   push:
 #     
@@ -8,78 +8,15 @@ on:
 #     # Only following types are handled by the action, but one can default to all as well
 #       types: [opened, reopened, synchronize]
 jobs:
-
-    Update-changelog:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
-          with:
-            fetch-depth: 0
-
-        - name: Get Previous Tag
-          run: |
-            LST_COMMIT=$(git rev-parse HEAD)
-            echo "::set-env name=headRef::$LST_COMMIT"
-            COMP_COMMIT=$(git rev-parse HEAD)^
-            echo "::set-env name=headref::$COMP_COMMIT"
-        
-        - name: Add and edit CHANGELOG.md
-          run: |
-            
-
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - name: Bump version and push tag
-#         id: tag_version
-#         uses: mathieudutour/github-tag-action@v6.0
-#         with:
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
-#       - name: Create a GitHub release
-#         uses: ncipollo/release-action@v1
-#         with:
-#           tag: ${{ steps.tag_version.outputs.new_tag }}
-#           name: Release ${{ steps.tag_version.outputs.new_tag }}
-#           body: ${{ steps.tag_version.outputs.changelog }}
-
-
-#   changes:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - id: file_changes
-#         uses: trilom/file-changes-action@v1.2.3
-#   release:
-#       name: Create Release
-#       runs-on: ubuntu-latest
-#       steps:
-#         - name: Checkout code
-#           uses: actions/checkout@v2
-#           with:
-#             fetch-depth: 0
-
-#         - name: Get Previous Tag
-#           run: |
-#             PREV_TAG=$(git describe --abbrev=0 --tags)
-#             echo "::set-env name=baseRef::$PREV_TAG"
-#             REQ_TAG=$(git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=10`)
-#             echo "::set-env name=headref::$REQ_TAG"
-#         - name: Generate Changelog
-#           id: generate_changelog
-#           uses: nblagoev/pull-release-notes-action@v1.0.2
-#           env:
-#             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-#           with:
-#             base-ref: ${{ env.baseRef }}
-#             head-ref: ${{ env.headref }}
-
-#         - name: Create Release
-#           uses: actions/create-release@v1
-#           env:
-#             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#           with:
-#             tag_name: ${{ github.ref }}
-#             release_name: Release ${{ github.ref }}
-#             body: ${{steps.generate_changelog.outputs.result}}
-#             draft: false
+  Create-PR:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            octokit.rest.pulls.create({
+            owner: githubappuser ,
+            repo: Release-testing,
+            head: main,
+            base: test,
+            });

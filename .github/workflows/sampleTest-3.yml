@@ -1,0 +1,13 @@
+name: Sample Test 3
+on: [pull_request]
+jobs:
+  build-3:
+    runs-on: self-hosted
+    steps:
+      - name: First Step
+        run: ls
+      - name: Second Step
+        run: sleep 45
+      - name: Third Step
+        run: xyz
+

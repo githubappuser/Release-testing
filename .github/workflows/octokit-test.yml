@@ -1,0 +1,23 @@
+name: Test-Octokit
+on:
+  push:
+#     
+#   pull_request:
+      branches:
+      - main
+#     # Only following types are handled by the action, but one can default to all as well
+#       types: [opened, reopened, synchronize]
+jobs:
+  Create-PR:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.pulls.create({
+            owner: 'githubappuser',
+            repo: 'Release-testing',
+            title: 'Try octokit',
+            head: 'main',
+            base: 'test',
+            });

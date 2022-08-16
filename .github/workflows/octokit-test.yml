@@ -14,10 +14,9 @@ jobs:
     steps:
 
       - name: Try rest calls
-        uses: actions/github-script@v6
-        env:
-            GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
+        uses: actions/github-script@v6        
         with:
+          GITHUB_TOKEN: ${{ secrets.OCTOKIT_TEST}}
           script: |
            github.rest.pulls.create({
             owner: 'githubappuser',

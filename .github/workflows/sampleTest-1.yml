@@ -1,7 +1,7 @@
 name: Sample Test 1
 on: 
+  push:
   pull_request:
-    types: [opened, reopened]
 jobs:
   build-1:
     runs-on: ubuntu-latest

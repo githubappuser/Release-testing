@@ -1,20 +1,18 @@
 name: Test-Octokit
 on:
   push:
-    branches:
-      - main
 #     
-  pull_request:
+#   pull_request:
       branches:
       - main
 #     # Only following types are handled by the action, but one can default to all as well
-      types: [opened, reopened, synchronize]
+#       types: [opened, reopened, synchronize]
 jobs:
   Create-PR:
     runs-on: ubuntu-latest
     steps:
-      
-      - uses: actions/github-script@v6
+      - name: Try rest calls
+        uses: actions/github-script@v6
         with:
           script: |
            github.rest.pulls.create({
@@ -23,8 +21,8 @@ jobs:
             title: 'Try octokit',
             head: 'main',
             base: 'test',
-            });
+           })
 
-      - name: Check action status
-        uses: actions/github-script@v6
-        if: ${{ !failure() }}
+#       - name: Check action status
+#         uses: actions/github-script@v6
+#         if: ${{ !failure() }}

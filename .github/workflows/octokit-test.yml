@@ -11,6 +11,7 @@ jobs:
   Create-PR:
     runs-on: ubuntu-latest
     steps:
+      
       - uses: actions/github-script@v6
         with:
           script: |
@@ -21,3 +22,7 @@ jobs:
             head: 'main',
             base: 'test',
             });
+
+      - name: Check action status
+        uses: actions/github-script@v6
+#        if: ${{ !failure() }}

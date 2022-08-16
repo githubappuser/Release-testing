@@ -26,6 +26,7 @@ jobs:
             })
       - name: Run checks
         uses: ./.github/workflows/sampleTest-1.yml
+        
           # ./.github/workflows/sampleTest-2.yml
           # ./.github/workflows/sampleTest-3.yml
 #       - name: Check action status

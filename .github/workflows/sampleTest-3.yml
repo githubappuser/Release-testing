@@ -1,5 +1,7 @@
 name: Sample Test 3
-on: [pull_request]
+on: 
+  pull_request:
+    types: [opened, reopened]
 jobs:
   build-3:
     runs-on: self-hosted

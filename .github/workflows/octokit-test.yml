@@ -25,10 +25,9 @@ jobs:
             base: 'test',
             })
       - name: Run checks
-        uses: |
-          ./.github/workflows/sampleTest-1.yml
-          ./.github/workflows/sampleTest-2.yml
-          ./.github/workflows/sampleTest-3.yml
+        uses: ./.github/workflows/sampleTest-1.yml
+          # ./.github/workflows/sampleTest-2.yml
+          # ./.github/workflows/sampleTest-3.yml
 #       - name: Check action status
 #         uses: actions/github-script@v6
 #         if: ${{ !failure() }}

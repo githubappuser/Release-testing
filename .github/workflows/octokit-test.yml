@@ -16,7 +16,7 @@ jobs:
       - name: Try rest calls
         uses: actions/github-script@v6        
         with:
-          GITHUB_TOKEN: ${{ secrets.OCTOKIT_TEST}}
+          github-token: ${{ secrets.OCTOKIT_TEST}}
           script: |
            github.rest.pulls.create({
             owner: 'githubappuser',

@@ -2,7 +2,6 @@ name: Sample Test 1
 on: 
   pull_request:
     types: [opened, reopened]
-  workflow_call:
 jobs:
   build-1:
     runs-on: self-hosted

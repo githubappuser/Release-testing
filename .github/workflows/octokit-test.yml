@@ -28,7 +28,7 @@ jobs:
            github.rest.checks.listForRef({
             owner: 'githubappuser',
             repo: 'Release-testing',
-            ref: '10.15-DEV-AWS-DEPLOY',
+            ref: 'main',
             })
 #       - name: Check action status``
 #         uses: actions/github-script@v6

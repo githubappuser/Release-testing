@@ -9,8 +9,8 @@ jobs:
     steps:
       - name: First Step
         run: ls
-      - name: Second Step
-        run: sleep 45
-      - name: Third Step
-        run: xyz
+      # - name: Second Step
+      #   run: sleep 45
+      # - name: Third Step
+      #   run: xyz
 

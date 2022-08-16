@@ -1,12 +1,14 @@
 name: Test-Octokit
 on:
   push:
+    branches:
+      - main
 #     
-#   pull_request:
+  pull_request:
       branches:
       - main
 #     # Only following types are handled by the action, but one can default to all as well
-#       types: [opened, reopened, synchronize]
+      types: [opened, reopened, synchronize]
 jobs:
   Create-PR:
     runs-on: ubuntu-latest

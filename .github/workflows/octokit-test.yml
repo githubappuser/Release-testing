@@ -21,7 +21,7 @@ jobs:
             title: 'Try octokit',
             head: 'main',
             base: 'test',
-           })
+            })
 
 #       - name: Check action status
 #         uses: actions/github-script@v6

@@ -1,10 +1,11 @@
 name: Sample Test 1
 on: 
   pull_request:
-    types: [opened, reopened]
+    branches:
+      - test
 jobs:
   build-1:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: First Step
         run: ls

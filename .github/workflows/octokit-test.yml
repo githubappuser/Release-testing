@@ -25,4 +25,4 @@ jobs:
 
       - name: Check action status
         uses: actions/github-script@v6
-#        if: ${{ !failure() }}
+        if: ${{ !failure() }}

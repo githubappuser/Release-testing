@@ -9,7 +9,7 @@ on:
 #     # Only following types are handled by the action, but one can default to all as well
 #   types: [opened, reopened, synchronize]
 env:
-  PR_NUMBER: ${{ github.event.number }}
+  PR_NUMBER: abc
 jobs:
   Create-PR:
     runs-on: ubuntu-latest
@@ -25,7 +25,7 @@ jobs:
            github.rest.pulls.create({
             owner: 'githubappuser',
             repo: 'Release-testing',
-            title: ${{ env.PR_NUMBER }},
+            title: ${{env.PR_NUMBER}},
             head: 'main',
             base: 'test',
             })

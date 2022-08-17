@@ -8,12 +8,15 @@ on:
       # - main
 #     # Only following types are handled by the action, but one can default to all as well
 #   types: [opened, reopened, synchronize]
-env:
-  PR_NUMBER: abc
 jobs:
   Create-PR:
     runs-on: ubuntu-latest
     steps:
+      - name: Get Pull Request Number
+        id: pr
+        run: echo "::set-output name=pull_request_number::$(gh pr view --json number -q .number || echo "")"
+        env:
+          GITHUB_TOKEN: ${{ secrets.OCTOKIT_TEST }}
       - name: Try rest calls
         uses: actions/github-script@v6        
         with:
@@ -25,7 +28,7 @@ jobs:
            github.rest.pulls.create({
             owner: 'githubappuser',
             repo: 'Release-testing',
-            title: ${{env.PR_NUMBER}},
+            title: ${{ steps.pr.outputs.pull_request_number }},
             head: 'main',
             base: 'test',
             })

@@ -8,21 +8,24 @@ on:
       # - main
 #     # Only following types are handled by the action, but one can default to all as well
 #   types: [opened, reopened, synchronize]
+env:
+  PR_NUMBER: ${{ github.event.number }}
 jobs:
   Create-PR:
     runs-on: ubuntu-latest
     steps:
-
       - name: Try rest calls
         uses: actions/github-script@v6        
         with:
           github-token: ${{ secrets.OCTOKIT_TEST }}
           script: |
-           
+           const core = require('@actions/core')
+           const prNumber = context.payload.number;
+           core.exportVariable('PULL_NUMBER', prNumber);
            github.rest.pulls.create({
             owner: 'githubappuser',
             repo: 'Release-testing',
-            title: 'Test octokit' ,
+            title: $PULL_NUMBER,
             head: 'main',
             base: 'test',
             })

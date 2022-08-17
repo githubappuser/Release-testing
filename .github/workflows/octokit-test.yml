@@ -12,17 +12,18 @@ jobs:
   Create-PR:
     runs-on: ubuntu-latest
     steps:
-
       - name: Try rest calls
         uses: actions/github-script@v6        
         with:
           github-token: ${{ secrets.OCTOKIT_TEST }}
           script: |
-           
+           // const core = require('@actions/core')
+           // const prNumber = context.payload.number;
+           // core.exportVariable('PULL_NUMBER', prNumber);
            github.rest.pulls.create({
             owner: 'githubappuser',
             repo: 'Release-testing',
-            title: 'Test octokit' ,
+            title: 'context.payload.number',
             head: 'main',
             base: 'test',
             })

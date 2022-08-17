@@ -18,9 +18,7 @@ jobs:
         with:
           github-token: ${{ secrets.OCTOKIT_TEST }}
           script: |
-           const core = require('@actions/core');
-           const prNumber = context.payload.number;
-           core.exportVariable('PULL_NUMBER', prNumber);
+           
            github.rest.pulls.create({
             owner: 'githubappuser',
             repo: 'Release-testing',
@@ -28,11 +26,15 @@ jobs:
             head: 'main',
             base: 'test',
             })
-           github.rest.checks.listForRef({
-            owner: 'githubappuser',
-            repo: 'Release-testing',
-            ref: 'main',
-            })
 #       - name: Check action status``
 #         uses: actions/github-script@v6
 #         if: ${{ !failure() }}
+# const core = require('@actions/core');
+#            const prNumber = context.payload.number;
+#            core.exportVariable('PULL_NUMBER', prNumber);
+
+          #  github.rest.checks.listForRef({
+          #   owner: 'githubappuser',
+          #   repo: 'Release-testing',
+          #   ref: 'main',
+          #   })

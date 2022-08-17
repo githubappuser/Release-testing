@@ -20,6 +20,7 @@ jobs:
            // const core = require('@actions/core')
            const prNumber = context.payload.number;
            core.exportVariable('PULL_NUMBER', prNumber);
+           console.log(prNumber)
            github.rest.pulls.create({
             owner: 'githubappuser',
             repo: 'Release-testing',

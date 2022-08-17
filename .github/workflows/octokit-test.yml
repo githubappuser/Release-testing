@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Get Pull Request Number
         id: pr
-        run:   echo ::set-env name=PULL_NUMBER::$(echo "$GITHUB_REF" | awk -F / '{print $3}')
+        run:   echo ::set-outputs name=PULL_NUMBER::$(echo "$GITHUB_REF" | awk -F / '{print $3}')
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -29,7 +29,7 @@ jobs:
            github.rest.pulls.create({
             owner: 'githubappuser',
             repo: 'Release-testing',
-            title: '${{ steps.pr.env.pull_request_number }}',
+            title: '${{ steps.pr.outputs.pull_request_number }}',
             head: 'main',
             base: 'test',
             })

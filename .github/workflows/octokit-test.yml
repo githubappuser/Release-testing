@@ -26,4 +26,4 @@ jobs:
             })
            const prNumber = github.event.pull_request.head.ref;
            core.exportVariable('PULL_NUMBER', prNumber);
-           //console.log(context)
+           console.log(github.event.pull_request)

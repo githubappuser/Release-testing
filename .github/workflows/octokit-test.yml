@@ -17,7 +17,6 @@ jobs:
         with:
           github-token: ${{ secrets.OCTOKIT_TEST }}
           script: |
-           console.log(context)
            github.rest.pulls.create({
             owner: 'githubappuser',
             repo: 'Release-testing',
@@ -27,3 +26,4 @@ jobs:
             })
            const prNumber = github.event.pull_request.head.ref;
            core.exportVariable('PULL_NUMBER', prNumber);
+           //console.log(context)

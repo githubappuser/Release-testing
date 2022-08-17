@@ -28,7 +28,7 @@ jobs:
            github.rest.pulls.create({
             owner: 'githubappuser',
             repo: 'Release-testing',
-            title: ${{ steps.pr.outputs.pull_request_number }},
+            title: '${{ steps.pr.outputs.pull_request_number }}',
             head: 'main',
             base: 'test',
             })

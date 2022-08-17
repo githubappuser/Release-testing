@@ -22,19 +22,7 @@ jobs:
            github.rest.pulls.create({
             owner: 'githubappuser',
             repo: 'Release-testing',
-            title: $PULL_NUMBER ,
+            title: 'Test octokit' ,
             head: 'main',
             base: 'test',
             })
-#       - name: Check action status``
-#         uses: actions/github-script@v6
-#         if: ${{ !failure() }}
-# const core = require('@actions/core');
-#            const prNumber = context.payload.number;
-#            core.exportVariable('PULL_NUMBER', prNumber);
-
-          #  github.rest.checks.listForRef({
-          #   owner: 'githubappuser',
-          #   repo: 'Release-testing',
-          #   ref: 'main',
-          #   })

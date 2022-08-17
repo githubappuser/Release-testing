@@ -23,7 +23,7 @@ jobs:
            github.rest.pulls.create({
             owner: 'githubappuser',
             repo: 'Release-testing',
-            title: '$PULL_NUMBER',
+            title: $PULL_NUMBER,
             head: 'main',
             base: 'test',
             })

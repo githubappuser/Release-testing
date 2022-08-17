@@ -18,18 +18,11 @@ jobs:
         with:
           github-token: ${{ secrets.OCTOKIT_TEST }}
           script: |
+           
            github.rest.pulls.create({
             owner: 'githubappuser',
             repo: 'Release-testing',
-            title: 'Try octokit',
+            title: 'Test octokit' ,
             head: 'main',
             base: 'test',
             })
-           github.rest.checks.listForRef({
-            owner: 'githubappuser',
-            repo: 'Release-testing',
-            ref: 'main',
-            })
-#       - name: Check action status``
-#         uses: actions/github-script@v6
-#         if: ${{ !failure() }}

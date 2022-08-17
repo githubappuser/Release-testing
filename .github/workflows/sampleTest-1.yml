@@ -7,7 +7,11 @@ jobs:
   build-1:
     runs-on: ubuntu-latest
     steps:
-      - name: First Step
-        run: ls
-      - name: Third Step
-        run: pwd
+      - name: Try rest calls
+        uses: actions/github-script@v6        
+        with:
+          github-token: ${{ secrets.OCTOKIT_TEST }}
+          script: | 
+           const prNumber = ${{github.event.number}} ;
+           core.exportVariable('PULL_NUMBER', prNumber);
+           console.log(${{github.event.number}})

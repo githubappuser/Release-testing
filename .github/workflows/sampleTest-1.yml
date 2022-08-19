@@ -15,3 +15,4 @@ jobs:
            const prNumber = ${{github.event.number}} ;
            core.exportVariable('PULL_NUMBER', prNumber);
            console.log(${{github.event.number}})
+#use .env folder and use process.env.var to use it dynamically           

@@ -2,7 +2,7 @@ name: Sample Test 2
 on: 
   pull_request:
     branches:
-     - test
+     - main
 jobs:
   build-2:
     runs-on: ubuntu-latest

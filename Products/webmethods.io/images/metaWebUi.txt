@@ -1,0 +1,2 @@
+Image: "webui"
+Dependencies: It depends on the "auth" and "api" images.
